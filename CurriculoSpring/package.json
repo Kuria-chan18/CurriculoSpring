@@ -1,0 +1,21 @@
+{
+  "name": "curriculospring-main",
+  "version": "1.0.0",
+  "description": "aaa",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "asd"
+  },
+  "keywords": [
+    "asdasd"
+  ],
+  "author": "as",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.2"
+  }
+}
