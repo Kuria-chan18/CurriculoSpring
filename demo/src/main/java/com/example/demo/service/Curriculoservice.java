@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.model.Curriculo;
-import com.example.demo.repository.CurriculoRepository;
+import com.example.demo.repository.Curriculorepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CurriculoService {
+public class Curriculoservice {
     @Autowired
-    private CurriculoRepository curriculoRepository;
+    private Curriculorepository curriculoRepository;
 
     public List<Curriculo> getAllCurriculos() {
         return curriculoRepository.findAll();
@@ -21,15 +21,20 @@ public class CurriculoService {
         return curriculoRepository.findById(id);
     }
 
-    public Optional<Curriculo> getCurriculoByDetails(String nome, String email, String telefone, String graduacao) {
-        return curriculoRepository.findByNomeAndEmailAndTelefoneAndGraduacao(nome, email, telefone, graduacao);
-    }
+    //public Optional<Curriculo> getCurriculoByDetails(String nome, String email, String telefone, String graduacao) {
+        //return curriculoRepository.findByNomeAndEmailAndTelefoneAndGraduacao(nome, email, telefone, graduacao);
+    //}
 
-    public Curriculo saveCurriculo(Curriculo curriculo) {
+    public Curriculo criarCurriculo(Curriculo curriculo) {
         return curriculoRepository.save(curriculo);
     }
 
     public void deleteCurriculo(Long id) {
         curriculoRepository.deleteById(id);
+    }
+
+    public Curriculo atualizarCurriculo(Long id, Curriculo curriculoDetails) {
+      
+        throw new UnsupportedOperationException("Unimplemented method 'atualizarCurriculo'");
     }
 }
