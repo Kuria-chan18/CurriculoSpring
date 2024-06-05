@@ -1,28 +1,20 @@
-FROM maven:3.8.4-openjdk-17 AS build
+FROM maven:3.8.5-openjdk-17-slim AS build
 
 WORKDIR /app
 
 COPY demo/pom.xml .
-COPY demo/src /src
-
+COPY demo/src ./src
 
 RUN mvn clean package -DskipTests
 
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17-jdk-slim
 
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
+WORKDIR /app
 
-ARG DATASOURCE_URL
-ARG DATASOURCE_USERNAME
-ARG DATASOURCE_PASSWORD
+COPY --from=build /app/target/*.jar app.jar
 
-ENV SPRING_DATASOURCE_URL=${DATASOURCE_URL}
-ENV SPRING_DATASOURCE_USERNAME=${DATASOURCE_USERNAME}
-ENV SPRING_DATASOURCE_PASSWORD=${DATASOURCE_PASSWORD}
+ENV PORT 8080
 
-RUN addgroup -S app && adduser -S app -G app
+EXPOSE 8080
 
-USER app
-
-
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+CMD ["java", "-Dserver.port=${PORT}", "-jar", "app.jar"]

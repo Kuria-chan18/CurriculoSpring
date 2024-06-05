@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
 import com.example.demo.model.Curriculo;
 import com.example.demo.repository.Curriculorepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class Curriculoservice {
         return curriculoRepository.findAll();
     }
 
-    public Optional<Curriculo> getCurriculoById(Long id) {
+    public Optional<Curriculo> getCurriculoById(UUID id) {
         return curriculoRepository.findById(id);
     }
 
@@ -29,12 +31,17 @@ public class Curriculoservice {
         return curriculoRepository.save(curriculo);
     }
 
-    public void deletarCurriculo(Long id) {
+    public void deletarCurriculo(UUID id) {
         curriculoRepository.deleteById(id);
     }
 
-    public Curriculo atualizarCurriculo(Long id, Curriculo curriculoDetails) {
+    public Curriculo atualizarCurriculo(UUID id, Curriculo curriculoDetails) {
       
         throw new UnsupportedOperationException("Unimplemented method 'atualizarCurriculo'");
+    }
+
+    public Optional<Curriculo> CurriculoId(UUID id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'CurriculoId'");
     }
 }

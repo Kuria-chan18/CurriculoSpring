@@ -1,10 +1,13 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Curriculo;
+
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 //import java.util.Optional;
 
-public interface Curriculorepository extends JpaRepository<Curriculo, Long> {
+public interface Curriculorepository extends JpaRepository<Curriculo, UUID> {
     //Optional<Curriculo> findByNomeAndEmailAndTelefoneAndGraduacao(String nome, String email, String telefone, String graduacao);
 }
